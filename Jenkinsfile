@@ -32,7 +32,7 @@ pipeline {
 				  nexusUrl: '13.213.14.6:8081', 
 				  nexusVersion: 'nexus3', 
 				  protocol: 'http', 
-				  repository: 'Jenkins-task-3', 
+				  repository: 'jenkins-task-3', 
 				  version: '1.${BUILD_NUMBER}'
 		  }
 	  }
