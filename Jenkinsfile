@@ -43,7 +43,7 @@ pipeline {
 			  }
 		  }
 		  steps {
-			  sh 'wget --user=admin --password=cyrilflair@1225'
+			  sh 'wget --user=admin --password=cyrilflair@1225 http://18.138.11.235:8081/repository/jen-task-03/com/blazeclan/DevOpsDemo/1.6/DevOpsDemo-1.6.war'
 			  deploy adapters: [
 				  tomcat8(credentialsId: 'tomcat', 
 					  path: '', 
