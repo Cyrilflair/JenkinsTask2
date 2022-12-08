@@ -29,12 +29,31 @@ pipeline {
 			  ],
 				  credentialsId: 'nexus', 
 				  groupId: 'com.blazeclan', 
-				  nexusUrl: '13.214.121.130:8081', 
+				  nexusUrl: '18.138.11.235/:8081', 
 				  nexusVersion: 'nexus3', 
 				  protocol: 'http', 
-				  repository: 'jen-task-03', 
-				  version: '1.${BUILD_NUMBER}'
+				  repository: 'jenkins-task-03', 
+				  version: '${BUILD_NUMBER}'
+		  }
+	  }
+	  	  stage('Pull the Artifact from Nexus and Deploy on Production') {
+		  agent{
+			  node{
+				  label 'jenkins-slave'
+			  }
+		  }
+		  steps {
+			  sh 'wget --user=admin --password=cyrilflair@1225'
+			  deploy adapters: [
+				  tomcat8(credentialsId: 'tomcat', 
+					  path: '', 
+					  url: 'http://13.213.32.234:8080/')
+			  ], 
+				  contextPath: '',
+				  war: '**/*.war'
 		  }
 	  }
   }
 }
+	
+	  
